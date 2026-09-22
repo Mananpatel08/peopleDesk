@@ -4,8 +4,8 @@ PeopleDesk is an employee management system with a Django API and a Next.js fron
 
 ## Projects
 
-- `ems-api/` - Django REST API
-- `ems-frontend/` - Next.js web application
+- `api/` - Django REST API
+- `web/` - Next.js web application
 
 ## Development
 
