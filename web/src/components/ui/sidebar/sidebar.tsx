@@ -1,12 +1,8 @@
 "use client";
 
-import { BadgeCent, BadgeSwissFranc, BaggageClaim, CakeSlice, CarFront, ChevronUpIcon, CircleChevronLeft, Lightbulb, LucideLayoutDashboard } from 'lucide-react'
-import Image from 'next/image';
-import React, { FC, useState } from 'react'
-import EMS from '../../../../public/logos/light-ens-logo.png'
+import React, { FC } from 'react'
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { ChevronLeftIcon, DocumentTextIcon, Squares2X2Icon, UsersIcon } from '@heroicons/react/24/outline';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import SidebarMenu from './sidebar-menu';
 import { useDashboardLayout } from '@/context/DashboardContext';
 
@@ -14,7 +10,7 @@ type Props = {
     isProfile: boolean
 }
 export const DashboardSidebar: FC<Props> = ({ isProfile }) => {
-    const { toggleActive, setToggleActive, toggleSidebar } = useDashboardLayout();
+    const { toggleActive, toggleSidebar } = useDashboardLayout();
     const themeChange = true;
     return (
         <>
@@ -27,12 +23,24 @@ export const DashboardSidebar: FC<Props> = ({ isProfile }) => {
                 <div className='relative'>
                     <Link
                         href="/"
-                        className="bg-white py-4 px-8 w-full lg:flex hidden gap-[10px] items-center h-[70px] "
+                        aria-label={isProfile ? "Back to dashboard" : "PeopleDesk dashboard"}
+                        className="bg-white py-4 px-5 w-full lg:flex hidden gap-[10px] items-center h-[70px] "
                     >
-                        <div className='flex items-center gap-2 '>
-                            {isProfile && (<ChevronLeftIcon className='w-5 h-5' />)}
-                            {toggleActive && (isProfile ? "Profile Settings" : "")}
-                        </div>
+                        {isProfile ? (
+                            <div className='flex items-center gap-2 text-gray-700'>
+                                <ChevronLeftIcon className='w-5 h-5' />
+                                {toggleActive && "Profile Settings"}
+                            </div>
+                        ) : (
+                            <div className='flex items-center gap-3 min-w-0'>
+                                <span className='flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-sm font-bold text-white'>
+                                    P
+                                </span>
+                                <span className={`${toggleActive ? "block" : "lg:hidden"} truncate text-lg font-semibold text-gray-800`}>
+                                    PeopleDesk
+                                </span>
+                            </div>
+                        )}
                     </Link>
                     <div
                         onClick={() => toggleSidebar()}
