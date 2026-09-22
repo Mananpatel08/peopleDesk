@@ -18,7 +18,7 @@ export const DashboardSidebar: FC<Props> = ({ isProfile }) => {
                 className={`${toggleActive
                     ? "xl:w-[262px] w-[250px] right-[-250px]"
                     : "lg:w-[100px] w-[250px] right-0"
-                    } h-screen flex flex-col transition-all lg:static fixed z-10 border-r`}
+                    } h-screen shrink-0 flex flex-col bg-white transition-[width,right] duration-300 lg:static fixed z-30 border-r border-gray-200`}
             >
                 <div className='relative'>
                     <Link
@@ -44,7 +44,13 @@ export const DashboardSidebar: FC<Props> = ({ isProfile }) => {
                     </Link>
                     <div
                         onClick={() => toggleSidebar()}
-                        className="absolute top-[3.8rem] right-[-0.6rem] border bg-white hover:bg-gray-100
+                        role="button"
+                        aria-label={toggleActive ? "Collapse sidebar" : "Expand sidebar"}
+                        tabIndex={0}
+                        onKeyDown={(event) => {
+                            if (event.key === "Enter" || event.key === " ") toggleSidebar();
+                        }}
+                        className="absolute top-1/2 right-[-0.6rem] -translate-y-1/2 border border-gray-200 bg-white hover:bg-gray-50
                             rounded-full p-0.5 hidden lg:block cursor-pointer transition-all duration-300 shadow-sm"
                     >
                         <ChevronLeftIcon
@@ -56,11 +62,19 @@ export const DashboardSidebar: FC<Props> = ({ isProfile }) => {
                 </div>
                 <div
                     className={`${themeChange ? "bg-white" : "bg-white"
-                        } px-[20px] py-1 h-full overflow-y-auto overflow-x-hidden `}
+                        } px-5 py-4 h-full overflow-y-auto overflow-x-hidden `}
                 >
                     <SidebarMenu toggleActive={toggleActive} isProfile={isProfile} />
                 </div>
             </aside>
+            {!toggleActive && (
+                <button
+                    type="button"
+                    aria-label="Close sidebar"
+                    onClick={() => toggleSidebar()}
+                    className="fixed inset-0 z-20 bg-gray-900/20 lg:hidden"
+                />
+            )}
         </>
     )
 }

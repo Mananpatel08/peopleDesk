@@ -34,7 +34,7 @@ export default function SidebarMenu({ toggleActive, isProfile }: { toggleActive:
 
     return (
         <nav>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-1.5">
                 {menuItems.map((item) => {
                     const isActive = pathname === item.href;
                     const Icon = item.icon;
@@ -43,9 +43,10 @@ export default function SidebarMenu({ toggleActive, isProfile }: { toggleActive:
                         <li key={item.name}>
                             <Link
                                 href={item.href}
-                                className={`text-base px-3 py-2.5 flex items-center gap-3 rounded-xl transition-all ${isActive
-                                    ? "bg-blue-100/50 text-blue-600"
-                                    : "hover:bg-gray-300/25 hover:shadow-sm text-gray-600"
+                                aria-current={isActive ? "page" : undefined}
+                                className={`text-[15px] px-3 py-2.5 flex items-center gap-3 rounded-xl transition-colors ${isActive
+                                    ? "bg-blue-50 text-blue-600"
+                                    : "hover:bg-gray-50 text-gray-600"
                                     } ${!toggleActive && "w-fit"}`}
                             >
                                 <span className="w-[25px] h-[25px] rounded-full flex items-center justify-center">
