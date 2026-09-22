@@ -24,7 +24,7 @@ export const DashboardSidebar: FC<Props> = ({ isProfile }) => {
                     <Link
                         href="/"
                         aria-label={isProfile ? "Back to dashboard" : "PeopleDesk dashboard"}
-                        className="bg-white py-4 px-5 w-full lg:flex hidden gap-[10px] items-center h-[70px] "
+                        className={`${toggleActive ? "px-5" : "px-0 lg:justify-center"} bg-white py-4 w-full lg:flex hidden gap-[10px] items-center h-[70px]`}
                     >
                         {isProfile ? (
                             <div className='flex items-center gap-2 text-gray-700'>
@@ -32,7 +32,7 @@ export const DashboardSidebar: FC<Props> = ({ isProfile }) => {
                                 {toggleActive && "Profile Settings"}
                             </div>
                         ) : (
-                            <div className='flex items-center gap-3 min-w-0'>
+                            <div className='flex items-center justify-center gap-3 min-w-0'>
                                 <span className='flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-sm font-bold text-white'>
                                     P
                                 </span>
@@ -62,7 +62,7 @@ export const DashboardSidebar: FC<Props> = ({ isProfile }) => {
                 </div>
                 <div
                     className={`${themeChange ? "bg-white" : "bg-white"
-                        } px-5 py-4 h-full overflow-y-auto overflow-x-hidden `}
+                        } ${toggleActive ? "px-5" : "px-5 lg:px-0"} py-4 h-full overflow-y-auto overflow-x-hidden`}
                 >
                     <SidebarMenu toggleActive={toggleActive} isProfile={isProfile} />
                 </div>

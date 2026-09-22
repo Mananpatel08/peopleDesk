@@ -47,7 +47,7 @@ export default function SidebarMenu({ toggleActive, isProfile }: { toggleActive:
                                 className={`text-[15px] px-3 py-2.5 flex items-center gap-3 rounded-xl transition-colors ${isActive
                                     ? "bg-blue-50 text-blue-600"
                                     : "hover:bg-gray-50 text-gray-600"
-                                    } ${!toggleActive && "w-fit"}`}
+                                    } ${!toggleActive && "w-fit lg:w-[60px] lg:justify-center lg:px-0"}`}
                             >
                                 <span className="w-[25px] h-[25px] rounded-full flex items-center justify-center">
                                     <Icon className="w-5 h-5" />
