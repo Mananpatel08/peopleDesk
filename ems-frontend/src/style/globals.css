@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: var(--font-inter);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#nprogress .bar {
+  background: #695be9;
+  height: 4px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #4ade80, 0 0 5px #4ade80;
+}
+
+#nprogress .spinner {
+  display: none;
+}
+
+.bg-custom-backdrop {
+  background-color: rgba(0, 0, 0, 0.25);
+}

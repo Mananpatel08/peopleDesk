@@ -1,0 +1,25 @@
+# Python
+**/__pycache__/
+*.py[cod]
+**/venv/
+**/.venv/
+
+# Environment and local data
+**/.env
+**/db.sqlite3
+**/*.log
+**/media/
+
+# Node and Next.js
+**/node_modules/
+**/.next/
+**/out/
+**/dist/
+**/build/
+**/.tsbuildinfo
+
+# Local configuration and OS files
+.DS_Store
+.vscode/
+.idea/
+*.swp
